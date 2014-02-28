@@ -1,29 +1,29 @@
 student_count = 23
 
 students = [
- "Mario Gintili",
- "Rick Brunstedt",
- "Mikhail Dubov",
- "Karolis Noreika",
- "Michael Sidon",
- "Charles de Barros",
- "Ruslan Vikhor",
- "Toby Retallick",
- "Mark Mekhail",
- "Sarah Young",
- "Hanna Wight",
- "Khushkaren Singh",
- "Manjit Singh",
- "Alex Gaudiosi",
- "Ross Hepburn",
- "Natascia Marchese",
- "Tiffanie Chia",
- "Matthew Thomas",
- "Freddy McGroarty",
- "Tyler Rollins",
- "Richard Curteis",
- "Anna Yanova",
- "Andrew Cumine",
+ ["Mario Gintili", :February],
+ ["Rick Brunstedt", :February],
+ ["Mikhail Dubov", :February],
+ ["Karolis Noreika", :February],
+ ["Michael Sidon", :February],
+ ["Charles de Barros", :February],
+ ["Ruslan Vikhor", :February],
+ ["Toby Retallick", :February],
+ ["Mark Mekhail", :February],
+ ["Sarah Young", :February],
+ ["Hanna Wight", :February],
+ ["Khushkaren Singh", :February],
+ ["Manjit Singh", :February],
+ ["Alex Gaudiosi", :February],
+ ["Ross Hepburn", :February],
+ ["Natascia Marchese", :February],
+ ["Tiffanie Chia", :February],
+ ["Matthew Thomas", :February],
+ ["Freddy McGroarty", :February],
+ ["Tyler Rollins", :February],
+ ["Richard Curteis", :February],
+ ["Anna Yanova", :February],
+ ["Andrew Cumine", :February]
 ]
 
 def print_header
@@ -31,9 +31,9 @@ def print_header
 	puts "-----------------"
 end
 
-def print(names)
-	names.each do |name|
-		puts name
+def print(students)
+	students.each do |student|
+		puts "#{student[0]} (#{student[1]} cohort)"
 	end
 end
 
