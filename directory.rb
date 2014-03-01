@@ -12,13 +12,13 @@ def input_students
 end
 
 def print_header
-	puts "The students of my cohort at Makers Academy whose names begin with 'A'"
+	puts "The students of my cohort at Makers Academy whose names are less than 12 characters"
 	puts "-----------------"
 end
 
 def print(students)
 	students.each do |student|
-		if student[:name].start_with?('A')
+		if student[:name].length < 12
 			puts "#{student[:name]} (#{student[:cohort]} cohort)"
 		end
 	end	
