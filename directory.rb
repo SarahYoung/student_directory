@@ -12,14 +12,16 @@ def input_students
 end
 
 def print_header
-	puts "The students of my cohort at Makers Academy"
+	puts "The students of my cohort at Makers Academy whose names begin with 'A'"
 	puts "-----------------"
 end
 
 def print(students)
-	students.each_with_index do |student, index|
-		puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
-	end
+	students.each do |student|
+		if student[:name].start_with?('A')
+			puts "#{student[:name]} (#{student[:cohort]} cohort)"
+		end
+	end	
 end
 
 def print_footer(names)
