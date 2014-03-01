@@ -14,34 +14,34 @@ def input_cohort
 end
 
 def input_students 
-	puts "Please enter the names of the students"
+	puts "Please enter the names of the students at Makers Academy"
 	puts "To finish, just hit return twice"
 	students = []
 	begin
 		name = gets.chomp
 		if !name.empty?
 			cohort = input_cohort 
-			students << {:name => name, :cohort => cohort.to_sym} 
+			students << {:name => name, :cohort => cohort.to_sym}
 			puts "We have #{students.length} students, please enter another name:"
 		end 
 	end while !name.empty? 
 	students
 end
 
-def print(students)
-	a = 0
-	while a < students.length
-		puts "#{students[a][:name]} (#{students[a][:cohort]} cohort)"
-		a += 1
-	end		
+def print_by_cohort(students)
+	cohorts = students.map { |student| student[:cohort] }
+	cohorts.each do |cohort|
+		students.select{|student| student[:cohort] == cohort}.each do |student|
+			puts "#{student[:name]}, (#{student[:cohort]} cohort)"
+		end
+	end
 end
 
 def print_footer(names)
 	puts "Overall, we have #{names.length} great students"
 end
 
-
-print_header
 students = input_students
-# print(students)
+print_header
+print_by_cohort(students)
 print_footer(students)
