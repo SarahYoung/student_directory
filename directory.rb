@@ -1,49 +1,47 @@
-students = [
- {:name => "Mario Gintili", :cohort => :February, :hobby => "coding"},
- {:name => "Rick Brunstedt", :cohort => :February, :hobby => "coding"},
- {:name => "Mikhail Dubov", :cohort => :February, :hobby => "coding"},
- {:name => "Karolis Noreika", :cohort => :February, :hobby => "coding"},
- {:name => "Michael Sidon", :cohort => :February, :hobby => "coding"},
- {:name => "Charles de Barros", :cohort => :February, :hobby => "coding"},
- {:name => "Ruslan Vikhor", :cohort => :February, :hobby => "coding"},
- {:name => "Toby Retallick", :cohort => :February, :hobby => "coding"},
- {:name => "Mark Mekhail", :cohort => :February, :hobby => "coding"},
- {:name => "Sarah Young", :cohort => :February, :hobby => "coding"},
- {:name => "Hanna Wight", :cohort => :February, :hobby => "coding"},
- {:name => "Khushkaren Singh", :cohort => :February, :hobby => "coding"},
- {:name => "Manjit Singh", :cohort => :February, :hobby => "coding"},
- {:name => "Alex Gaudiosi", :cohort => :February, :hobby => "coding"},
- {:name => "Ross Hepburn", :cohort => :February, :hobby => "coding"},
- {:name => "Natascia Marchese", :cohort => :February, :hobby => "coding"},
- {:name => "Tiffanie Chia", :cohort => :February, :hobby => "coding"},
- {:name => "Matthew Thomas", :cohort => :February, :hobby => "coding"},
- {:name => "Freddy McGroarty", :cohort => :February, :hobby => "coding"},
- {:name => "Tyler Rollins", :cohort => :February, :hobby => "coding"},
- {:name => "Richard Curteis", :cohort => :February, :hobby => "coding"},
- {:name => "Anna Yanova", :cohort => :February, :hobby => "coding"},
- {:name => "Andrew Cumine",:cohort => :February, :hobby => "coding"}
-]
-
-
 def print_header
 	puts "The students of my cohort at Makers Academy"
 	puts "-----------------"
 end
 
+def input_cohort
+	months = ["January", "February", :default]
+	begin
+		puts "Enter the cohort" 
+		cohort = gets.chomp
+		cohort = :default if cohort.empty?
+	end while !months.include?(cohort)
+	cohort
+end
+
+def input_students 
+	puts "Please enter the names of the students"
+	puts "To finish, just hit return twice"
+	students = []
+	begin
+		name = gets.chomp
+		if !name.empty?
+			cohort = input_cohort 
+			students << {:name => name, :cohort => cohort.to_sym} 
+			puts "We have #{students.length} students, please enter another name:"
+		end 
+	end while !name.empty? 
+	students
+end
+
 def print(students)
-	i = 0
-	student = {}
-	while i < students.length
-		student = students[i]
-		puts "#{i + 1}. #{student[:name]} (#{student[:cohort]} cohort), likes #{student[:hobby]}"
-		i += 1
-	end
+	a = 0
+	while a < students.length
+		puts "#{students[a][:name]} (#{students[a][:cohort]} cohort)"
+		a += 1
+	end		
 end
 
 def print_footer(names)
 	puts "Overall, we have #{names.length} great students"
 end
 
+
 print_header
-print(students)
+students = input_students
+# print(students)
 print_footer(students)
