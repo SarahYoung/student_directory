@@ -22,26 +22,31 @@ def input_students
 		if !name.empty?
 			cohort = input_cohort 
 			students << {:name => name, :cohort => cohort.to_sym}
-			puts "We have #{students.length} students, please enter another name:"
+			if students.length > 1
+				puts "We have #{students.length} students, please enter another name:"
+			else
+				puts "We have #{students.length} student, please enter another name:"
+			end
 		end 
 	end while !name.empty? 
 	students
 end
 
-def print_by_cohort(students)
-	cohorts = students.map { |student| student[:cohort] }
-	cohorts.each do |cohort|
-		students.select{|student| student[:cohort] == cohort}.each do |student|
-			puts "#{student[:name]}, (#{student[:cohort]} cohort)"
-		end
+def print_students(students)
+	students.each do |student|
+		puts "#{student[:name]} (#{student[:cohort]})"
 	end
 end
 
 def print_footer(names)
-	puts "Overall, we have #{names.length} great students"
+	if names.length > 1
+		puts "Overall, we have #{names.length} great students"
+	else
+		puts "Overall, we have #{names.length} great student"
+	end
 end
 
 students = input_students
 print_header
-print_by_cohort(students)
+print_students(students)
 print_footer(students)
