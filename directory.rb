@@ -6,8 +6,8 @@ end
 def input_cohort
 	months = ["January", "February", :default]
 	begin
-		puts "Enter the cohort" 
-		cohort = gets.chomp
+		puts "Enter the cohort\n" 
+		cohort = gets.chop
 		cohort = :default if cohort.empty?
 	end while !months.include?(cohort)
 	cohort
@@ -18,7 +18,7 @@ def input_students
 	puts "To finish, just hit return twice"
 	students = []
 	begin
-		name = gets.chomp
+		name = gets.chop
 		if !name.empty?
 			cohort = input_cohort 
 			students << {:name => name, :cohort => cohort.to_sym}
